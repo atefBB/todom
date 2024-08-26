@@ -1,0 +1,7 @@
+{
+  "name": "todom",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
