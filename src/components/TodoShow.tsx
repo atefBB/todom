@@ -26,16 +26,20 @@ export const TodoShow = ({ todo, removeTodo, changeTodo }: any) => {
 
   if (showEdit === true) {
     return (
-      <li className="todo">
+      <IonItem className="todo w-full">
         <TodoEdit todo={todo} onSubmit={handleSubmit} />
-      </li>
+      </IonItem>
     );
   }
 
   return (
     <IonItem onDoubleClick={handleDoubleClick}>
-      <div className="todo">
-        <p className={`ion-float-left ${todo.completed && "completed"}`}>
+      <div className="todo w-full">
+        <p
+          className={`ion-float-left ${
+            todo.completed === true ? "completed" : ""
+          }`}
+        >
           {todo.title}
         </p>
 

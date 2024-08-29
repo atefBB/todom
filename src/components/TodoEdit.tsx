@@ -1,6 +1,6 @@
 import { useState } from "react";
-
-import { CheckIcon } from "../Icons/CheckIcon";
+import { IonIcon } from "@ionic/react";
+import { checkmarkOutline } from "ionicons/icons";
 
 export const TodoEdit = ({ todo, onSubmit }: any) => {
   const [title, setTitle] = useState(todo.title);
@@ -15,11 +15,14 @@ export const TodoEdit = ({ todo, onSubmit }: any) => {
   };
 
   return (
-    <form className="todo-edit">
-      <input type="text" value={title} onChange={handleChange} />
-      <button type="submit" onClick={handleSubmit}>
-        <CheckIcon />
-      </button>
+    <form className="flex items-center justify-between w-full">
+      <input
+        className="form-input rounded"
+        type="text"
+        value={title}
+        onChange={handleChange}
+      />
+      <IonIcon icon={checkmarkOutline} onClick={handleSubmit} />
     </form>
   );
 };
