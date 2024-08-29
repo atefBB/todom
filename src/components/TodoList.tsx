@@ -1,8 +1,10 @@
+import { IonList } from "@ionic/react";
+
 import { TodoShow } from "./TodoShow";
 
 export function TodoList({ todos, removeTodo, changeTodo }: any) {
   return (
-    <ul className="todo-list">
+    <IonList className="todo-list">
       {todos.map((todo: any) => {
         return (
           <TodoShow
@@ -13,6 +15,6 @@ export function TodoList({ todos, removeTodo, changeTodo }: any) {
           />
         );
       })}
-    </ul>
+    </IonList>
   );
 }

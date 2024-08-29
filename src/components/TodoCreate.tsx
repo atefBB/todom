@@ -16,6 +16,7 @@ export const TodoCreate = ({ createTodo }: any) => {
   return (
     <form onSubmit={handleSubmit} className="todo-create">
       <input
+        className="form-input shadow-lg rounded px-3 w-full h-10"
         type="text"
         name="title"
         id="title"

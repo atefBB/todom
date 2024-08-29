@@ -1,9 +1,8 @@
 import { useState } from "react";
+import { IonIcon, IonItem } from "@ionic/react";
+import { trashOutline, createOutline } from "ionicons/icons";
 
 import { TodoEdit } from "./TodoEdit";
-
-import { EditIcon } from "../Icons/EditIcon";
-import { DeleteIcon } from "../Icons/DeleteIcon";
 
 export const TodoShow = ({ todo, removeTodo, changeTodo }: any) => {
   const [showEdit, setShowEdit] = useState(false);
@@ -34,17 +33,17 @@ export const TodoShow = ({ todo, removeTodo, changeTodo }: any) => {
   }
 
   return (
-    <li className="todo" onDoubleClick={handleDoubleClick}>
-      <p className={todo.completed && "completed"}>{todo.title}</p>
+    <IonItem onDoubleClick={handleDoubleClick}>
+      <div className="todo">
+        <p className={`ion-float-left ${todo.completed && "completed"}`}>
+          {todo.title}
+        </p>
 
-      <div className="actions">
-        <button onClick={handleDelete}>
-          <DeleteIcon />
-        </button>
-        <button onClick={handleEdit}>
-          <EditIcon />
-        </button>
+        <div className="ion-float-right actions">
+          <IonIcon icon={trashOutline} onClick={handleDelete} />
+          <IonIcon icon={createOutline} onClick={handleEdit} />
+        </div>
       </div>
-    </li>
+    </IonItem>
   );
 };
