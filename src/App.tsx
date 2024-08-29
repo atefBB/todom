@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { setupIonicReact, IonPage, IonContent } from "@ionic/react";
 
+import { Heading } from "./components/Heading";
 import { TodoList } from "./components/TodoList";
 import { TodoCreate } from "./components/TodoCreate";
 
@@ -52,16 +53,17 @@ export const App = () => {
       return todo;
     });
 
-    setTodos(updatedTodos);
+    setTodos(() => {
+      localStorage.setItem("todos", JSON.stringify(updatedTodos));
+      return updatedTodos;
+    });
   };
 
   return (
     <IonPage>
       <IonContent className="ion-padding">
-        <main>
-          <h1>
-            <span>Do it today! Or leave it tomorrow !</span>
-          </h1>
+        <main className="grid grid-cols-1 gap-1 justify-between h-full">
+          <Heading />
           <TodoList
             todos={todos}
             removeTodo={removeTodo}
