@@ -21,17 +21,27 @@ import "./App.css";
 setupIonicReact();
 
 export const App = () => {
-  const [todos, setTodos] = useState<any[]>([]);
+  const storedTodos = JSON.parse(localStorage.getItem("todos") as string) || [];
+
+  const [todos, setTodos] = useState<any[]>(storedTodos);
 
   const createTodo = (title: any) => {
     const newTodo = { id: crypto.randomUUID(), title, completed: false };
     const updatedTodos = [...todos, newTodo];
-    setTodos(updatedTodos);
+
+    setTodos(() => {
+      localStorage.setItem("todos", JSON.stringify(updatedTodos));
+      return updatedTodos;
+    });
   };
 
   const removeTodo = (id: any) => {
     const updatedTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(updatedTodos);
+
+    setTodos(() => {
+      localStorage.setItem("todos", JSON.stringify(updatedTodos));
+      return updatedTodos;
+    });
   };
 
   const changeTodo = (id: any, title: any, completed = false) => {
